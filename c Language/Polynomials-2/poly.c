@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 int main (){
     printf("starting");    
@@ -25,8 +26,40 @@ int main (){
     // printf("%d",count);
 
     //WRITING POLYNOMIAL 
+    // int counts;
+    // printf("\ntype coefficients of polynomial ");
+    // scanf(" %d",&counts);
+    // int size = 0;
+    // int till = 0;
+    // for(till = counts;till!=0;till=till/10){
+    //     size ++;
+    // }
+    // int countsArray[size];
+    // int i;
+    // for(i=0;i<=size-1;i++){
+    //     countsArray[i]=counts % 10;
+    //     counts = counts/10;
+    // }
+    // // sprintf(countsArray,"%sd",counts);
+    // for(size;size>1;size--){
+    //     printf("%dx^%d+",countsArray[size-1],size-1);
+    // }
+    // printf("%d",countsArray[0]);
+    
+
+    //WRITING VARIABLE TO ARRY
+    // int rant = 32432;
+    // int i;
+    // int rar[5];
+    // for(i=0;i<=4;i++){
+    //     rar[i] = rant % 10;
+    //     rant = rant/10;
+    //     printf("\n%d",rar[i]);
+    // }
+    
+    //OUTPUT OF POLYNOMIAL WHEN X VALUE IS TOLD
     int counts;
-    printf("\ntype start of polynomial digits ");
+    printf("\ntype coefficients of polynomial ");
     scanf(" %d",&counts);
     int size = 0;
     int till = 0;
@@ -40,21 +73,28 @@ int main (){
         counts = counts/10;
     }
     // sprintf(countsArray,"%sd",counts);
+    int sizetwo = size;
     for(size;size>1;size--){
         printf("%dx^%d+",countsArray[size-1],size-1);
     }
-    printf("%d",countsArray[0]);
-    
+    printf("%d",countsArray[size-1]);
 
-    //WRITING VARIABLE TO ARRY
-    // int rant = 32432;
-    // int i;
-    // int rar[5];
-    // for(i=0;i<=4;i++){
-    //     rar[i] = rant % 10;
-    //     rant = rant/10;
-    //     printf("\n%d",rar[i]);
+    int x;
+    printf("\nvalue of x = ");
+    scanf("%d",&x);
+    int equation = 0;
+    for(sizetwo;sizetwo>=1;sizetwo--){
+        equation += countsArray[sizetwo-1]*pow(x,(sizetwo-1));
+    }
+    printf("\n total is %d",equation);
+
+    // int n, z, sum = 0;
+    // printf("Enter a positive integer: ");
+    // scanf("%d",&n);
+    // for(z=1; z <= n; ++z)
+    // {
+    //     sum += z;   // sum = sum+z;
     // }
-    
-    return 0;
+    // printf("Sum = %d",sum);
+    // return 0;
 }
