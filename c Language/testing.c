@@ -1,25 +1,85 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
-struct positive {
-    int roma;
-    char puysh[7];
-    int age;
+struct node
+{
+    int data;
+    struct node *next;
 };
 
-int main(){
-    // printf("this world");
-    // printf("\n is this working");
-    // int roman = 43;
-    // struct positive aiyush;
-    // printf("\n %d",roman);
-    // struct positive new;
-    // new.roma = 89;
-    // strcpy(new.puysh,"Dancer");
-    // scanf("%d",new.age);
-    // printf("\n %d %s %d",new.roma,new.puysh,new.age);
-    printf("starting");
-    int a[3]={20,30,40};
-    printf("%d",*(a+1));
-    return 0;
+struct node *front = NULL;
+struct node *rear = NULL;
+
+void display();
+void add(int);
+void del();
+
+int main()
+{
+    int n, ch;
+    do
+    {
+        printf("\n\nQueue Menu\n1. Add \n2. Remove\n3. Display\n0. Exit");
+        printf("\nEnter Choice 0-3? : ");
+        scanf("%d", &ch);
+        switch (ch)
+        {
+            case 1:
+                printf("\nEnter number ");
+                scanf("%d", &n);
+                add(n);
+                break;
+            case 2:
+                del();
+                break;
+            case 3:
+                display();
+                break;
+        }
+    }while (ch != 0);
+}
+
+void add(int item)
+{
+    struct node *nptr = malloc(sizeof(struct node));
+    nptr->data = item;
+    nptr->next = NULL;
+    if (rear == NULL)
+    {
+        front = nptr;
+        rear = nptr;
+    }
+    else
+    {
+        rear->next = nptr;
+        rear = rear->next;
+    }
+}
+
+void display()
+{
+    struct node *temp;
+    temp = front;
+    printf("\n");
+    while (temp != NULL)
+    {
+        printf("%d\t", temp->data);
+        temp = temp->next;
+    }
+}
+
+void del()
+{
+    if (front == NULL)
+    {
+        printf("\n\nqueue is empty \n");
+    }
+    else
+    {
+        struct node *temp;
+        temp = front;
+        front = front->next;
+        printf("\n\n%d deleted", temp->data);
+        free(temp);
+    }
 }

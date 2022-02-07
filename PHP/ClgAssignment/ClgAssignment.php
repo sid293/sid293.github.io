@@ -77,7 +77,7 @@
 
             //SHOWING VOWELS IN STRING
             function eighth(){
-                $samet = "something new";
+                $samet = "vowels";
                 $aray = array("a","e","i","o","u");
                 // extract($aray);
                 $a=0;
@@ -110,6 +110,7 @@
                 echo "\nu is ",$u;
                 echo "\no is ",$o;
             }
+            // eighth();
 
             //CHECKING IF STIRNG IS PALINDROME
             function ninth($stor){
@@ -227,10 +228,8 @@
             }
             // fifteen();
 
-            //Q5TH 
+            //Q5TH  
             function sixteenth(){
-                echo "funciton sixteenth \n";
-
                 //using explode() function
                 // $inputstring = "hi my name is dodo";
                 // print_r (explode(" ",$inputstring));
@@ -245,11 +244,7 @@
                 for($i=0;$i<$quantityOfItems;$i++){
                     $totalPrice[$i] = $rates[$i] * $quantity[$i];
                     $TotalPrice = $TotalPrice + $totalPrice[$i];
-                    echo "<br>";
-                    print($totalPrice[$i]." ");
                 }
-                echo "<br>";
-                print ("total price is ".$TotalPrice);
                 echo "<table border='1'>
                 <tr>
                 <th>Name</th>
@@ -289,7 +284,6 @@
                 $option = $_POST["what"];
                 // echo "<br>";
                 // echo $option;
-
                 switch($option){
                     case "sm":
                         //sm
@@ -319,7 +313,7 @@
             }
             // seventeenth();
 
-            //SWITCH CASE
+            //SWITCH CASE 
             function eighteenth(){
                 $new = "b";
                 switch($new){
@@ -339,9 +333,9 @@
             //Q7TH
             function nineteenth(){
                 $selected = $_POST["note"];
+                $newarray = array ('knew'=>'more','none'=>'this','well'=>'come','today'=>'tomorrow','this'=>'that');
                 switch("$selected"){
                     case "le":
-                        $newarray = array ('knew'=>'more','none'=>'this','well'=>'come','today'=>'tomorrow','this'=>'that');
                         print_r ($newarray);
                         break;
                     case "so":
@@ -370,6 +364,276 @@
 
             //Q8TH
             function twenty(){
+                //ASSOCIATIVE ARRAY ENCODING AND DECODING INTO JSON
+                $newarray = array(1=>3,2=>2,3=>1,4=>5,5=>4);
+                var_dump($newarray);
+                $keys = array_keys($newarray);
+
+                //CHANGING VALUES IN ARRAY
+                // $newarray[3] = $newarray[1];
+                // echo "<br>".$newarray[1];
+                // print_r($newarray);
                 
+                //SORTING BY VALUE ASCENDIGN , DECENDING
+                echo "<br> ascending by value";
+                asort($newarray);
+                print_r($newarray);
+                echo "<br> decending by value ";
+                arsort($newarray);
+                print_r($newarray);
+                
+                //WITHOUT CHANGING KEYS SORTING 
+                echo "<br> ascending by value (without changing kyes)";
+                sort($newarray);
+                print_r($newarray);
+                echo "<br> decending by value (without changing keys)";
+                rsort($newarray);
+                print_r($newarray);
+                
+                echo "<br> removing odd";
+                function filter($var){
+                    if($var%2==0){
+                        return($var);
+                        // echo $var;
+                        // echo "is even";
+                    }
+                }
+                print_r(array_filter($newarray,"filter"));
+
+                //MULTISORT 
+                $secondarray = array(26=>500,10=>330,15=>900,4=>5);
+                echo "<br> multisort ";
+                array_multisort($newarray,SORT_ASC,$secondarray,SORT_ASC);
+                print_r($newarray);
+                echo "<br>";
+                print_r($secondarray);
+
+                //MERGING ARRAYS
+                $thirdarray = array_merge($newarray,$secondarray);
+                echo "<br> merged array";
+                print_r($thirdarray);
+                
+                //ARRAY INTERSECT
+                echo "<br> intersect array";
+                print_r(array_intersect($newarray,$secondarray));
+                
+                //ARRAY UNION
+                echo "<br> unique elements array";
+                print_r(array_unique($thirdarray));
+                
+                //ARRAY DIFFERENCE
+                echo "<br> difference array";
+                // print_r($newarray);
+                print_r(array_diff($newarray,$secondarray));
+
+                //ENCODING AND DECODING INTO JSON
+                // $encoded = json_encode($newarray);
+                // echo $encoded;
+                // echo "<br>";
+                // var_dump(json_decode($encoded,true)); //true changes it into associative array
+                // echo "<br>";
+                // asort($newarray);
+                // $value = array(1,2,3,4,5);
+                // //CURRENTLY WORKING ON
+                // foreach($newarray as $key){
+                //     $i = 0;
+                //     $key = $value[$i];
+                //     $i++;
+                // }
+                // var_dump($newarray);
+
+                //FOREACH LOOP
+                // $secondarray = [23,44,7,82];
+                // foreach($secondarray as $value){
+                //     echo "$value <br>";
+                // }
+                // foreach($newarray as $key => $value){
+                //     echo "$value = $key<br>";
+                // }
+
             }
+            // twenty();
+
+            //Q9TH
+            function twentyone(){
+                define("pi",22/7);          //THIS IS HOW YOU DEFINE CONSTANT
+                echo pi;
+                class shapes{
+                    public $name;
+                    public $color;
+                    function set_name($name){
+                        $this->name = $name;
+                    }
+                    function set_color($colour){
+                        $this->color = $colour;
+                    }
+                    function area($l,$b){
+                        // return $l*$b;
+                        switch($this->name){
+                            case "circle":
+                                // return "c";
+                                return 2*pi*$l;
+                                break;
+                            case "square":
+                                // return "sq";
+                                return $l*$l;
+                                break;
+                            case "rectangle":
+                                // return "rc";
+                                return $l*$b;
+                                break;
+                        }
+                    }
+                    function volume($l,$b,$h){
+                        return 2*pi*$l**2;
+                    }
+                }
+                $shap = new shapes();
+                $shap->set_name("circle");
+                $shap->set_color("black");
+                echo "<br>";
+                echo $shap->name;
+                print_r($shap->area(22,0));
+                var_dump($shap instanceof shapes);
+                print_r($shap->volume(20,0,0));
+            }
+            // twentyone();
+
+            //Q10TH
+            function twentytwo(){
+                // class employee{
+                //     public $code;
+                //     public $name;
+                //     public $designation;
+                //     // function set($code,$name,$designation){
+                //     //     $this->code = $code;
+                //     //     $this->name = $name;
+                //     //     $this->designation = $des;
+                //     // }
+                // }
+                // class emp_account extends employee{
+                //     public $account_number;
+                //     public $joining_date;
+                //     // public function set2($anum,$jd){
+                //     //     $this->account_number = $anum;
+                //     //     $this->joining_date = $jd;
+                //     // }
+                // }
+                // class emp_sall extends employee{
+                //     public $basic_pay;
+                //     public $earnings;
+                //     public $deduction;
+                //     function __construct($bp,$er,$dc,$code,$name,$designation,$anum,$jd){
+                //         $this->basic_pay = $bp;
+                //         $this->earnings = $er;
+                //         $this->deduction = $dc;
+                //         $this->code = $code;
+                //         $this->name = $name;
+                //         $this->designation = $des;
+                //         $this->account_number = $anum;
+                //         $this->joining_date = $jd;
+                //     }
+                // }
+
+                // $emp = array();
+                // $emp[0] = new emp_sall(500,1000,10,950,"raju","senior officer",1038766666,"12/2/2023");
+                // $emp[1] = new emp_sall(700,2000,5,860,"sham","junior officer",103875555,"12/2/2022");
+                // $emp[2] = new emp_sall(800,5600,90,7660,"babu","junior officer",103875555,"12/2/2022");
+                // print_r($emp[2]);
+                // echo "<table class='mastertable'>";
+                // echo "<tr>";
+                // echo "<td>basic pay</td>";
+                // echo "<td>earnings</td>";
+                // echo "<td>deduction</td>";
+                // echo "<td>code</td>";
+                // echo "</tr>";
+                // echo "</table>";
+                
+                
+                include 'Q10end.php';
+
+
+                
+                // class ceo extends employee{
+                //     public function testing(){
+                //         echo "function working";
+                //     }
+                //     static $count = 10;
+                //     public static function firststaticfunction(){
+                //         echo "stactic function working";
+                //         return self::$count++;
+                //     }
+                // }
+                // ceo::firststaticfunction();
+                // echo "<br>";
+                // echo ceo::firststaticfunction();
+                // echo "<br>";
+                // echo ceo::firststaticfunction();
+                // echo "<br>";
+                // echo ceo::$count;
+
+                // $baby = new ceo();
+                // $baby->set_name('boss');
+                // echo $baby->name;
+                // echo $baby->testing();
+                // echo $baby->count;
+                
+                //TERNARY OPERATOR -- WORKS FOR EVERY LANGUAGE
+                // echo (true)?"is true":"is false";
+
+                // function test(){
+                //     if(true) echo "ths";
+                // }
+                // test();
+
+                //MYSORT FUNCTOIN
+                // function sortthis($a,$b){
+                //     if($a==$b) return 0;
+                //     ($a<$b)? -1:1;
+                //     // if($a==$b)
+                //     //     return 0;
+                //     // if($x<$y)
+                //     //     return -1;
+                //     // else
+                //     //     return 1;
+                // }
+                // $a = array(2,6,3,8);
+                // usort($a,"sortthis");
+                // print_r($a);
+            }
+            // twentytwo();
+
+            //Q11TH
+            function twentythree(){
+                interface sound{
+                    public function woo();
+                }
+                interface Vocalizer
+                {
+                    public function vocalize(string $message): string;
+                }
+                class animal implements sound{
+                    public function woo(){
+                        echo "boo";
+                    }
+                }
+                class alien implements sound{
+                    public function woo(){
+                        echo "err";
+                    }
+                }
+                class species implements Vocalizer{
+                    public function vocalize(string $message):string
+                    {
+                        return "this is string ".$message;
+                    }
+                }
+                $homo = new species();
+                $homo->vocalize('rant');
+                $cat = new animal();
+                $cat->woo(); 
+                $octopos = new alien();
+                $octopos->woo();
+            }
+            twentythree();
         ?>

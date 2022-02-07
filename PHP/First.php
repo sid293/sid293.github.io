@@ -3,7 +3,7 @@
 
     echo "Starting\n";
     //VARIABLES
-    function c(){
+    function c(){4
         $name = "red";
         $message = "to all uns";
         echo "welocom </br>";

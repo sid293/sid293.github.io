@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            height:50px;
+            width:50px;
+            border-radius:50px;
+            font-size:30px;
+            border:0px;
+            background-color:grey;
+        }
+        .buttons{
+            background-color:black;
+        }
+        .display{
+            background:black;
+            border-top-left-radius:8px;
+            border-top-right-radius:8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="display">
+        <h2 id ="inside">0</h2>
+    </div>
+    <div class="buttons">
+        <button onclick="click()">1</button>
+        <button onclick="click()">2</button>
+        <button onclick="click()">3</button>
+        <button onclick="click()">c</button>
+        <br>
+        <button onclick="click()">4</button>
+        <button onclick="click()">5</button>
+        <button onclick="click()">6</button>
+        <button onclick="click()">*</button>
+        <br>
+        <button onclick="click()">7</button>
+        <button onclick="click()">8</button>
+        <button onclick="click()">9</button>
+        <button onclick="click()">=</button>
+        <br>
+        <button onclick="click()">+</button>
+        <button onclick="click()">0</button>
+        <button onclick="click()">-</button>
+        <button onclick="click()">/</button>
+    </div>    
+    <script>
+        function click(){
+            console.log("click");
+            document.write("yes");
+            // var x = document.getElementById("one").innerHTML;
+        }
+
+    </script>
+</body>
+</html>

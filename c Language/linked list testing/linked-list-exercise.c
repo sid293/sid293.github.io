@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <strings.h>
 
 struct node{
     int value;
@@ -17,16 +16,17 @@ void printRLL(struct node* first){
     
 }
 int main(){
-    struct node *first = (struct node*)malloc(sizeof(struct node));
-    struct node *second = (struct node*)malloc(sizeof(struct node));
-    struct node *third = (struct node*)malloc(sizeof(struct node));
-    first -> value = 32;
-    second -> value = 12;
-    third -> value = 76;
-    first -> next = second;
-    second -> next = third;
-    third -> next = NULL;
-    printLL(first);
+    printf("hellow world");
+    // struct node *first = (struct node*)malloc(sizeof(struct node));
+    // struct node *second = (struct node*)malloc(sizeof(struct node));
+    // struct node *third = (struct node*)malloc(sizeof(struct node));
+    // first -> value = 32;
+    // second -> value = 12;
+    // third -> value = 76;
+    // first -> next = second;
+    // second -> next = third;
+    // third -> next = NULL;
+    // printLL(first);
 
     return 0; 
 };

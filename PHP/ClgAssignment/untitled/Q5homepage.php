@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="ClgAssignment.php" method="post">
+    <form action="Q5.php" method="post">
         <h2>Item id: <input type="text" name="ids" value="123,455,654"></h2>
         <h2>Item name:<input type="text" name="names" value="cpu,gpu,ssd"></h2>
         <h2>Item rate:<input type="text" name="rates" value="330,400,660"></h2>

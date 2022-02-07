@@ -71,5 +71,4 @@ int main(){
     printf("size choco %d",sizeof(choco));
     choco = (int*)calloc(5,sizeof(int));
     printf("size choco %d",sizeof(choco));
-
 };
