@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing:box-border;
+            margin:0px;
+            padding:0px;
+        }
+        body{
+            display: flex;
+            font-family: 'Roboto', sans-serif;
+            flex-direction:column;
+            height:100vh;
+            align-items:center;
+            justify-content:center;
+        }
+        #time{
+            color:white;
+            font-size:8rem;
+            text-shadow:5px 5px black;  
+        }
+        h1{
+            color:white;
+            margin-bottom:3rem;
+        }
+        h2{
+            color:white;
+            margin-bottom:0.5rem;
+            opacity:0.6;
+        }
+        @media(max-width:700px){
+            #time{
+                font-size:6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <time id="time">12:00PM</time>
+    <h1>
+        <span id="greetings">Good Morning</span>
+        <span id="name" contenteditable="true">sid</span>
+    </h1>
+    <h2 id = 'fquestion'>What's your focus for today?</h2>
+    <h2 id="focus" contenteditable="true">Default</h2>
+    <script>
+        let current = document.getElementById('time');
+        const time = new Date();
+        hours = time.getHours();
+        let phase = hours>=12?"PM":"AM";
+        function show(){
+            const time = new Date();
+            hours = time.getHours();
+            minutes = time.getMinutes();
+            seconds = time.getSeconds();
+            current.innerHTML=`${twelvehour(hours)}<span>:</span>${addzero(minutes)}<span>:</span>${addzero(seconds)}<span>:</span>${phase}`;
+            setTimeout(show,1000);
+        }
+        function twelvehour(o){
+            if(o>12){
+                return o-12;
+            }else{
+                return o;
+            }
+        }
+        function addzero(n){
+            return (n<10?'0':'') + n;
+        }
+        function bg(){
+            const time = new Date();
+            if(time.getHours()>17 || time.getHours()<5){
+                let greet = document.getElementById('greetings');
+                greet.innerHTML = 'Good Evening';
+                document.body.style.background = "url('night.jpg')";
+            }
+            else if(time.getHours()>12 && time.getHours()<17){
+                let greet = document.getElementById('greetings');
+                greet.innerHTML = 'Good Afternoon';
+                greet.style.color = 'black';
+                document.getElementById('name').style.color = 'black';
+                current.style.color = 'black';
+                document.body.style.background = "url('afternoon.jpg')";                
+                document.body.style.backgroundSize = "150vh";                
+            }
+            else{
+                document.body.style.background = 'url(sunrise.jpg)';
+            }
+        }
+        let name = document.getElementById('name');
+        let focus = document.getElementById('focus');
+        name.addEventListener("blur",save);
+        name.addEventListener("keypress",save);
+        function save(e){
+            if(e.which == 13 || e.keyCode == 13){
+                localStorage.setItem('name',e.target.innerText);
+                name.blur();
+            }
+            localStorage.setItem('name',e.target.innerText);
+        }
+        focus.addEventListener("blur",ame);
+        focus.addEventListener("keypress",ame);
+        function ame(e){
+            if(e.which == 13 || e.keyCode == 13){
+                localStorage.setItem('focus',e.target.innerText);
+                focus.blur();
+            }
+            localStorage.setItem('focus',e.target.innerText);
+        }
+        if(localStorage.getItem('name') != null){
+            name.innerHTML = localStorage.getItem('name');
+        }
+        if(localStorage.getItem('focus') != null){
+            focus.innerHTML = localStorage.getItem('focus');
+        }
+        bg();
+        show(); 
+    </script>
+</body>
+</html>

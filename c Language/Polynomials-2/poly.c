@@ -84,9 +84,10 @@ int main (){
     scanf("%d",&x);
     int equation = 0;
     for(sizetwo;sizetwo>=1;sizetwo--){
-        equation += countsArray[sizetwo-1]*pow(x,(sizetwo-1));
+        equation += countsArray[sizetwo-1]*pow(x,(sizetwo-1));  //NOTE NEED TO USE "-lm" OPERATOR WHILE COMPILING TO RUN POW
     }
     printf("\n total is %d",equation);
+
 
     // int n, z, sum = 0;
     // printf("Enter a positive integer: ");

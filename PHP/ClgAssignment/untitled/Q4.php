@@ -9,7 +9,7 @@ if(strpos($ss,$fs)==0){
     echo "found at first place";
 }
 else { 
-    echo "<br>";
+    echo "<br>"; 
     echo "not at first place";
 }
 $replaced_string = str_replace($fs,$RString,$ss);

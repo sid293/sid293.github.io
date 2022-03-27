@@ -22,6 +22,7 @@ vec4 <- c(4,4,5)
 vec5 <- c(5,6,7)
 veclist <- list(vec3="first-vec","second-vec"=vec4,vec5="third-vec")
 names(veclist)
+veclist
 
 #concatinating lists
 lambs = list(2,3,4)
