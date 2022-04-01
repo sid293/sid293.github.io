@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align:center;
+        }
+        h3{
+            width:20vw;
+            border:2px solid black;
+            background-color:yellow;
+            font-family:arial;
+        }
+        .container{
+            display:grid;
+            grid-template-columns:50px 50px 50px 50px 50px 50px;
+            grid-gap:8vw;
+        }
+        .word{
+            font-size:30px;
+            text-align:center;
+            color:rgb(58, 32, 189);
+            border:3px solid rgb(28, 110, 90);
+            background-color:rgb(206, 171, 206);
+        }
+    </style>
+</head>
+<body>
+    <h1>Sounds</h1>
+    <h3>Warning:Do not play on high volume.</h3>
+    <h2>Press these keys on your keyboard to play game sounds.</h2>
+    <div class="container">
+        <div class="word">A</div>
+        <div class="word">S</div>
+        <div class="word">D</div>
+        <div class="word">F</div>
+        <div class="word">G</div>
+        <div class="word">H</div>
+    </div>
+
+    <audio  id='abr'>
+        <source src="abr.wav" type="audio/wav">
+    </audio>
+    <audio  id='at'>
+        <source src="at.wav" type="audio/wav">
+    </audio>
+    <audio  id='db'>
+        <source src="db.wav" type="audio/wav">
+    </audio>
+    <audio  id='gn'>
+        <source src="gn.wav" type="audio/wav">
+    </audio>
+    <audio  id='go'>
+        <source src="go.wav" type="audio/wav">
+    </audio>
+    <audio  id='sst'>
+        <source src="sst.wav" type="audio/wav">
+    </audio>
+
+    <script>
+    window.addEventListener("keypress",playit);
+    let test1 = document.getElementById('abr');
+    let test2 = document.getElementById('at');
+    let test3 = document.getElementById('db');
+    let test4 = document.getElementById('gn');
+    let test5 = document.getElementById('go');
+    let test6 = document.getElementById('sst');
+    function playit(){
+        if(event.code == 'KeyA'){
+            test1.play();
+        }
+        else if(event.code == 'KeyS'){
+            test2.play();
+        }
+        else if(event.code == 'KeyD'){
+            test3.play();
+        }
+        else if(event.code == 'KeyF'){
+            test4.play();
+        }
+        else if(event.code == 'KeyG'){
+            test5.play();
+        }
+        else if(event.code == 'KeyH'){
+            test6.play();
+        }
+    }
+    </script>
+</body>
+</html>
