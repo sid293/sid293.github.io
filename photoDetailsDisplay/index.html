@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            font-family:sans-serif;
+            font-size:50px;
+            text-align:center;
+        }
+        .images{
+            display: grid;
+            grid-gap:4px;
+            grid-template-columns: auto auto auto;
+        }
+        .img{
+            width:100%;
+            height:100%;
+            transition:ease-out 1.5s;
+        }
+        .img2{
+            width:100%;
+            height:100%;
+        }
+        .image2{
+            overflow:hidden;
+            height:30vh;
+            width:30vw;
+            padding:0;
+            margin:0;
+            position:relative;
+        }
+        .img:hover{
+            height:350px;
+            width:450px;
+        }
+        .hide{
+            position:fixed;
+            visibility:visible;
+            top:7vh;
+            left:5vw;
+            width:90vw;
+            height:70vh;
+        }
+        .show{
+            visibility:hidden;
+        }
+        </style>
+</head>
+<body>
+    <h1>Gallery</h1>
+    <div class="images">
+        <div class="image2" id = 'image2'>
+            <img src="o.jpg" alt="Ironman" class="img" onmouseover="hover(this)" onmouseout="revert(this)">
+            <div class="im" id="Ironman"></div>
+        </div>
+        <div class="image2">
+            <img src="p.jpg" alt="spiderman" class="img" onmouseover="hover(this)" onmouseout="revert(this)">
+            <div class="sm" id="spiderman"></div>
+        </div>
+        <div class="image2">
+            <img src="a.jpg" alt="spiderman" class="img" onmouseover="hover(this)" onmouseout="revert(this)">
+            <div class="sm" id="spiderman"></div>
+        </div>
+        <div class="image2">
+            <img src="b.jpg" alt="spiderman" class="img" onmouseover="hover(this)" onmouseout="revert(this)">
+            <div class="sm" id="spiderman"></div>
+        </div>
+        <div class="image2">
+            <img src="c.jpg" alt="spiderman" class="img" onmouseover="hover(this)" onmouseout="revert(this)">
+            <div class="sm" id="spiderman"></div>
+        </div> 
+        <div class="image2">
+            <img src="d.jpg" alt="spiderman" class="img" onmouseover="hover(this)" onmouseout="revert(this)"> 
+            <div class="sm" id="spiderman"></div>
+        </div>
+        <div class="image2">
+            <img src="e.jpg" alt="spiderman" class="img" onmouseover="hover(this)" onmouseout="revert(this)">
+            <div class="sm" id="spiderman"></div>
+        </div>
+        <div class="image2">
+            <img src="f.jpg" alt="spiderman" class="img" onmouseover="hover(this)" onmouseout="revert(this)">
+            <div class="sm" id="spiderman"></div>
+        </div>
+        <div class="image2" id = 'lastdiv'>
+            <img src="g.jpg" id="last" alt="spiderman" class="img" onmouseover="hover(this)" onmouseout="revert(this)">
+            <div class="sm" id="spiderman"></div>
+        </div>
+        <div class="image2" id = 'lastdiv'>
+            <img src="h.jpg" id="last" alt="spiderman" class="img" onmouseover="hover(this)" onmouseout="revert(this)">
+            <div class="sm" id="spiderman"></div>
+        </div>
+        <div class="image2" id = 'lastdiv'>
+            <img src="i.jpg" id="last" alt="spiderman" class="img" onmouseover="hover(this)" onmouseout="revert(this)">
+            <div class="sm" id="spiderman"></div>
+        </div>
+        <div class="image2" id = 'lastdiv'>
+            <img src="j.jpg" id="last" alt="spiderman" class="img" onmouseover="hover(this)" onmouseout="revert(this)">
+            <div class="sm" id="spiderman"></div>
+        </div>
+        <div class="image2" id = 'lastdiv'>
+            <img src="k.jpg" id="last" alt="spiderman" class="img" onmouseover="hover(this)" onmouseout="revert(this)">
+            <div class="sm" id="spiderman"></div>
+        </div>
+    </div>
+    <div id="bigpic" class="show" ></div>
+    <script>
+        function hover(element){
+            document.getElementById(element.alt).innerHTML = element.alt;
+        }
+        function revert(element){
+            document.getElementById(element.alt).innerHTML = "";
+        }
+
+        window.onload = () => {
+            console.log("load");
+            let imgs = document.getElementsByClassName('img');
+            let bigpic = document.getElementById('bigpic');
+            if(imgs.length>0){
+                for(let i of imgs){
+                    console.log(i);
+                    i.onclick = () => {
+                        bigpic.innerHTML = ''; 
+                        bigpic.className = 'hide';
+                        let clone = i.cloneNode();
+                        clone.className = 'img2';
+                        bigpic.appendChild(clone);
+                    };
+                }
+            }
+            bigpic.onclick = () => {
+                bigpic.innerHTML = '';
+                bigpic.className = "show";
+            };
+
+        };
+        </script>   
+</body>
+</html>

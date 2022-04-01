@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height:60vh;
+            position:relative;
+            background-color:black;
+        }
+        .main{
+            position:absolute;
+            margin:0;
+            top :50%;
+            left :50%;
+            /* display:grid; */
+            /* display:flex; */
+            /* align-items:center;
+            justify-content:center; */
+        }
+        #grid{
+            display:grid;
+            grid-template-columns:70px 70px 70px;
+            grid-gap:5px;
+        }
+        .tons{
+            font-family:sans-serif;
+            font-size:70px;
+            text-align:center;
+            text-justify:center;
+            width:70px;
+            height:70px;
+            background-color:lightblue;
+        }
+        h1{
+            color:rgb(255, 238, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="title">
+            <h1>Tic Tac Toe</h1>
+        </div>
+        <div id="grid">
+            <div class="but1 tons" onclick="mark(1)"></div>
+            <div class="but2 tons" onclick="mark(2)"></div>
+            <div class="but3 tons" onclick="mark(3)"></div>
+            <div class="but4 tons" onclick="mark(4)"></div>
+            <div class="but5 tons" onclick="mark(5)"></div>
+            <div class="but6 tons" onclick="mark(6)"></div>
+            <div class="but7 tons" onclick="mark(7)"></div>
+            <div class="but8 tons" onclick="mark(8)"></div>
+            <div class="but9 tons" onclick="mark(9)"></div>
+        </div>
+        <div id="grid2"></div>
+    </div>
+
+    <script>
+        let flag = 0;
+        function mark(no){
+            console.log('working',no);
+            let element = document.getElementsByClassName(`but${no}`);
+            console.log(element[0]);
+            if(element[0].innerHTML != 'x' && element[0].innerHTML != 'o'){
+                if(flag == 0){
+                    element[0].innerHTML = 'x';
+                    flag=1;
+                }else{
+                    element[0].innerHTML = 'o';
+                    flag=0;
+                }
+            }
+            let elements = document.getElementsByClassName("tons");
+            let written = elements[no-1].innerHTML;
+            let winner = null;
+            
+            if(elements[0].innerHTML==elements[1].innerHTML && elements[1].innerHTML==elements[2].innerHTML && elements[2].innerHTML == written){
+                winner = written;
+            }
+            else if(elements[0].innerHTML==elements[3].innerHTML && elements[3].innerHTML==elements[6].innerHTML && elements[6].innerHTML == written){
+                winner = written;
+            }
+            else if(elements[0].innerHTML==elements[4].innerHTML && elements[4].innerHTML==elements[8].innerHTML && elements[8].innerHTML == written){
+                winner = written;
+            }
+            else if(elements[2].innerHTML==elements[1].innerHTML && elements[1].innerHTML==elements[0].innerHTML && elements[0].innerHTML == written){
+                winner = written;
+            }
+            else if(elements[2].innerHTML==elements[4].innerHTML && elements[4].innerHTML==elements[6].innerHTML && elements[6].innerHTML == written){
+                winner = written;
+            }
+            else if(elements[2].innerHTML==elements[5].innerHTML && elements[5].innerHTML==elements[8].innerHTML && elements[8].innerHTML == written){
+                winner = written;
+            }
+            else if(elements[1].innerHTML==elements[4].innerHTML && elements[4].innerHTML==elements[7].innerHTML && elements[7].innerHTML == written){
+                winner = written;
+            }
+            else if(elements[5].innerHTML==elements[3].innerHTML && elements[3].innerHTML==elements[4].innerHTML && elements[4].innerHTML == written){
+                winner = written;
+            }
+            let empty = 0;
+            for(let i=0;i<elements.length;i++){
+                if(elements[i].innerHTML == ''){
+                    empty++;
+                }
+            }
+            if(empty == 0){
+                var win = document.getElementById("grid");
+                win.innerHTML = "Draw";
+                var button = document.createElement("button");
+                button.innerHTML = "Play again";
+                win2 = document.getElementById("grid2");
+                win2.appendChild(button);
+                button.addEventListener("click",function(){location.reload()});
+                button.style.backgroundColor = "lightblue";
+                button.style.fontSize = "30px";
+                win.style.fontSize = "50px";
+                win.style.color = "lightblue";
+            }
+            else if(winner != null){
+                var win = document.getElementById("grid");
+                win.innerHTML = `Winner is ${winner}`;
+                var button = document.createElement("button");
+                button.innerHTML = "Play again";
+                win2 = document.getElementById("grid2");
+                win2.appendChild(button);
+                button.addEventListener("click",function(){location.reload()});
+                button.style.backgroundColor = "lightblue";
+                button.style.fontSize = "30px";
+                win.style.fontSize = "50px";
+                win.style.color = "lightblue";
+                // location.reload();
+            }
+
+        }
+    </script>
+</body>
+</html>
